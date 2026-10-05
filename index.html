@@ -1,95 +1,1541 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="MindCare is a calm, student-friendly mental health awareness website promoting understanding, self-care and support."><link rel="stylesheet" href="style.css"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet"><title>Home | MindCare</title></head><body><header class="navbar"><div class="nav-container"><a class="logo" href="index.html"><span class="logo-icon">🌿</span><span>Mind<span>Care</span></span></a><button class="menu-btn" aria-label="Open menu">☰</button><nav><a href="index.html">Home</a><a href="about.html">About</a><a href="challenges.html">Challenges</a><a href="self-care.html">Self-Care</a><a href="support.html">Support</a><a href="resources.html">Resources</a><a href="faq.html">FAQ</a></nav></div></header><main><section class="hero" id="home">
-<div class="hero-content">
-<p class="eyebrow">MENTAL HEALTH AWARENESS</p>
-<h1>
-                    Your mind matters.
-                    <span>Your wellbeing matters.</span>
-</h1>
-<p class="hero-text">
-                    Mental health is an important part of our overall wellbeing.
-                    Understanding it, talking about it and seeking support can
-                    help create a healthier and more supportive society.
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Haven | A Mindful Sanctuary for Healing & Recovery</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        serif: ['"Newsreader"', 'serif'],
+                    },
+                    colors: {
+                        haven: {
+                            base: '#FAF9F6',     // Warm off-white background
+                            surface: '#F3F1EC',  // Soft stone surface
+                            card: '#FFFFFF',     // Clean white card
+                            subtle: '#E8E6DF',   // Muted borders
+                            accent: '#607B71',   // Calming sage green
+                            accentLight: '#E8EFEA',
+                            accentDark: '#445952',
+                            warmth: '#D98263',   // Muted terracotta for highlights
+                            slate: '#545D63',    // Calming muted text
+                            dark: '#1E2322',     // Soft charcoal for high contrast
+                        }
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'breathe': 'breathe 8s ease-in-out infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        breathe: {
+                            '0%, 100%': { transform: 'scale(1)', opacity: '0.4' },
+                            '50%': { transform: 'scale(1.35)', opacity: '0.85' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-6px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #FAF9F6;
+            color: #1E2322;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #FAF9F6;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #D5D3CB;
+            border-radius: 9999px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #607B71;
+        }
+
+        .chat-bubble-received {
+            background-color: #F3F1EC;
+            border-radius: 18px 18px 18px 4px;
+        }
+        .chat-bubble-sent {
+            background-color: #607B71;
+            color: #FFFFFF;
+            border-radius: 18px 18px 4px 18px;
+        }
+
+        .glass-nav {
+            background: rgba(250, 249, 246, 0.88);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        .fade-in {
+            animation: fadeIn 0.4s ease-out forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between selection:bg-haven-accentLight selection:text-haven-accentDark">
+
+    <!-- Top Emergency Bar -->
+    <aside aria-label="Crisis Support" class="bg-haven-dark text-stone-300 text-xs py-2 px-4 border-b border-stone-800">
+        <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-2">
+            <div class="flex items-center gap-2 font-light">
+                <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                <span>Immediate crisis support available worldwide 24/7. You are never alone.</span>
+            </div>
+            <div class="flex items-center gap-4 text-white font-medium">
+                <span>US/CA: <strong class="underline decoration-haven-warmth">988</strong></span>
+                <span>UK: <strong class="underline decoration-haven-warmth">111</strong></span>
+                <span>AU: <strong class="underline decoration-haven-warmth">13 11 14</strong></span>
+                <button onclick="navigateTo('helplines')" class="text-haven-warmth hover:underline ml-2 flex items-center gap-1 text-xs">
+                    View Global Directory <i data-lucide="arrow-right" class="w-3 h-3"></i>
+                </button>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Navigation Bar -->
+    <header class="sticky top-0 z-40 glass-nav border-b border-haven-subtle transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12 h-20 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a href="#home" onclick="navigateTo('home')" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-full bg-haven-accentLight text-haven-accent flex items-center justify-center border border-haven-accent/20 group-hover:scale-105 transition-transform duration-300">
+                    <i data-lucide="feather" class="w-5 h-5"></i>
+                </div>
+                <div>
+                    <span class="text-xl font-serif tracking-tight font-medium text-haven-dark">haven</span>
+                    <span class="text-[10px] tracking-widest uppercase block text-haven-slate -mt-1 font-sans font-semibold">Mind Sanctuary</span>
+                </div>
+            </a>
+
+            <!-- Desktop Links -->
+            <nav class="hidden md:flex items-center gap-1 lg:gap-2">
+                <button onclick="navigateTo('home')" class="nav-link px-4 py-2 rounded-full text-sm font-medium text-haven-slate hover:text-haven-dark hover:bg-haven-surface transition-colors" data-page="home">Overview</button>
+                <button onclick="navigateTo('recovery')" class="nav-link px-4 py-2 rounded-full text-sm font-medium text-haven-slate hover:text-haven-dark hover:bg-haven-surface transition-colors" data-page="recovery">Recovery Guides</button>
+                <button onclick="navigateTo('exercises')" class="nav-link px-4 py-2 rounded-full text-sm font-medium text-haven-slate hover:text-haven-dark hover:bg-haven-surface transition-colors" data-page="exercises">Calming Tools</button>
+                <button onclick="navigateTo('helplines')" class="nav-link px-4 py-2 rounded-full text-sm font-medium text-haven-slate hover:text-haven-dark hover:bg-haven-surface transition-colors" data-page="helplines">WHO & Helplines</button>
+            </nav>
+
+            <!-- Actions / Chatbot USP Anchor -->
+            <div class="flex items-center gap-3">
+                <button onclick="navigateTo('companion')" class="relative inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-haven-accent text-white text-xs md:text-sm font-medium hover:bg-haven-accentDark transition-all duration-300 shadow-sm hover:shadow group">
+                    <i data-lucide="sparkles" class="w-4 h-4 text-emerald-200 animate-pulse"></i>
+                    <span>Haven AI Companion</span>
+                    <span class="hidden lg:inline-block px-1.5 py-0.5 text-[9px] bg-white/20 rounded font-semibold tracking-wide uppercase ml-0.5">USP</span>
+                </button>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobileMenuBtn" class="md:hidden p-2 rounded-lg text-haven-slate hover:bg-haven-surface">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Drawer Menu -->
+        <div id="mobileMenu" class="hidden md:hidden px-6 py-4 border-t border-haven-subtle bg-haven-base space-y-2">
+            <button onclick="navigateTo('home'); toggleMobileMenu();" class="block w-full text-left py-2 text-sm font-medium text-haven-dark">Overview</button>
+            <button onclick="navigateTo('recovery'); toggleMobileMenu();" class="block w-full text-left py-2 text-sm font-medium text-haven-dark">Recovery Guides</button>
+            <button onclick="navigateTo('exercises'); toggleMobileMenu();" class="block w-full text-left py-2 text-sm font-medium text-haven-dark">Calming Tools</button>
+            <button onclick="navigateTo('helplines'); toggleMobileMenu();" class="block w-full text-left py-2 text-sm font-medium text-haven-dark">WHO & Helplines</button>
+            <button onclick="navigateTo('companion'); toggleMobileMenu();" class="block w-full text-left py-2 text-sm font-semibold text-haven-accent">Haven AI Companion (USP)</button>
+        </div>
+    </header>
+
+    <!-- MAIN VIEW CONTAINER (SPA View Switcher) -->
+    <main class="flex-grow max-w-7xl mx-auto w-full px-6 lg:px-12 py-10">
+
+        <!-- ==================== VIEW 1: HOME / OVERVIEW ==================== -->
+        <section id="view-home" class="view-page space-y-24 fade-in">
+            <!-- Hero Section -->
+            <div class="grid lg:grid-cols-12 gap-12 items-center pt-4 pb-8">
+                <div class="lg:col-span-7 space-y-6">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-haven-surface border border-haven-subtle text-xs text-haven-slate">
+                        <span class="w-1.5 h-1.5 rounded-full bg-haven-accent"></span>
+                        Evidence-based recovery & compassionate AI guidance
+                    </div>
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-serif text-haven-dark tracking-tight leading-[1.15]">
+                        A quiet place for your mind to <em class="italic text-haven-accent font-serif font-light">breathe</em>, recover, and begin again.
+                    </h1>
+                    <p class="text-base sm:text-lg text-haven-slate leading-relaxed font-light max-w-xl">
+                        Mental healing is not linear. Explore clinically-informed recovery paths, instant grounding exercises, verified WHO guidelines, and talk with our 24/7 empathetic AI mentor.
+                    </p>
+                    <div class="pt-2 flex flex-wrap gap-4 items-center">
+                        <button onclick="navigateTo('companion')" class="px-6 py-3.5 rounded-full bg-haven-accent text-white font-medium text-sm hover:bg-haven-accentDark transition-all duration-300 shadow-sm flex items-center gap-2">
+                            <i data-lucide="message-circle-heart" class="w-4 h-4"></i>
+                            Talk with AI Companion
+                        </button>
+                        <button onclick="navigateTo('exercises')" class="px-6 py-3.5 rounded-full bg-white text-haven-dark border border-haven-subtle hover:bg-haven-surface font-medium text-sm transition-all duration-300 flex items-center gap-2">
+                            <i data-lucide="wind" class="w-4 h-4 text-haven-accent"></i>
+                            Grounding Breathing
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Minimalist Interactive Hero Card: Quick Mood Check-In -->
+                <div class="lg:col-span-5">
+                    <div class="bg-white rounded-3xl p-7 border border-haven-subtle shadow-sm space-y-6">
+                        <div class="flex items-center justify-between border-b border-haven-subtle pb-4">
+                            <div>
+                                <h3 class="font-serif text-lg text-haven-dark">Gentle Check-in</h3>
+                                <p class="text-xs text-haven-slate font-light">How does your heart feel in this moment?</p>
+                            </div>
+                            <span class="text-xs text-haven-accent bg-haven-accentLight px-2.5 py-1 rounded-full font-medium">Safe Space</span>
+                        </div>
+                        
+                        <div class="grid grid-cols-5 gap-2 text-center" id="moodSelector">
+                            <button onclick="selectMood('Overwhelmed', 'Take a slow, deep breath. You carry so much; let this moment be soft.')" class="mood-btn p-3 rounded-2xl bg-haven-surface hover:bg-haven-accentLight hover:border-haven-accent border border-transparent transition-all">
+                                <span class="text-2xl block mb-1">🌧️</span>
+                                <span class="text-[11px] text-haven-slate font-medium">Heavy</span>
+                            </button>
+                            <button onclick="selectMood('Anxious', 'Your thoughts are racing, but your body is right here and safe.')" class="mood-btn p-3 rounded-2xl bg-haven-surface hover:bg-haven-accentLight hover:border-haven-accent border border-transparent transition-all">
+                                <span class="text-2xl block mb-1">⚡</span>
+                                <span class="text-[11px] text-haven-slate font-medium">Anxious</span>
+                            </button>
+                            <button onclick="selectMood('Numb', 'It is okay to feel neutral or detached. Healing requires zero performance.')" class="mood-btn p-3 rounded-2xl bg-haven-surface hover:bg-haven-accentLight hover:border-haven-accent border border-transparent transition-all">
+                                <span class="text-2xl block mb-1">🌫️</span>
+                                <span class="text-[11px] text-haven-slate font-medium">Numb</span>
+                            </button>
+                            <button onclick="selectMood('Tired', 'Rest is not a reward—it is a biological necessity. Be gentle with your output.')" class="mood-btn p-3 rounded-2xl bg-haven-surface hover:bg-haven-accentLight hover:border-haven-accent border border-transparent transition-all">
+                                <span class="text-2xl block mb-1">🍂</span>
+                                <span class="text-[11px] text-haven-slate font-medium">Tired</span>
+                            </button>
+                            <button onclick="selectMood('Hopeful', 'Cherish this flicker of lightness. Let it warm your day step by step.')" class="mood-btn p-3 rounded-2xl bg-haven-surface hover:bg-haven-accentLight hover:border-haven-accent border border-transparent transition-all">
+                                <span class="text-2xl block mb-1">🌱</span>
+                                <span class="text-[11px] text-haven-slate font-medium">Hopeful</span>
+                            </button>
+                        </div>
+
+                        <!-- Dynamic Mood Response Feedback -->
+                        <div id="moodFeedback" class="p-4 rounded-2xl bg-haven-surface text-xs text-haven-dark leading-relaxed font-light flex items-start gap-3">
+                            <i data-lucide="heart" class="w-4 h-4 text-haven-accent mt-0.5 flex-shrink-0"></i>
+                            <span id="moodFeedbackText">Select how you feel above to receive tailored grounding encouragement.</span>
+                        </div>
+
+                        <div class="pt-2">
+                            <button onclick="startChatWithCurrentMood()" class="w-full py-2.5 text-xs text-center text-haven-accentDark bg-haven-accentLight hover:bg-haven-accent hover:text-white rounded-xl font-medium transition-colors">
+                                Talk to Haven AI about this feeling &rarr;
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Core Pillars Section -->
+            <div class="space-y-8">
+                <div class="max-w-2xl">
+                    <span class="text-xs uppercase tracking-widest text-haven-accent font-semibold">Our Approach</span>
+                    <h2 class="text-3xl font-serif text-haven-dark mt-1">Four pathways toward restoring internal calm</h2>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Card 1 -->
+                    <div class="p-6 rounded-3xl bg-white border border-haven-subtle hover:border-haven-accent/40 transition-all duration-300 space-y-4 group">
+                        <div class="w-12 h-12 rounded-2xl bg-haven-surface group-hover:bg-haven-accentLight text-haven-accent flex items-center justify-center transition-colors">
+                            <i data-lucide="bot" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-lg font-serif font-medium text-haven-dark">Empathetic AI Companion</h3>
+                        <p class="text-xs text-haven-slate leading-relaxed font-light">
+                            Our unique chatbot listens without judgment, reframes cognitive distortions, and serves curated video wisdom to uplift you.
+                        </p>
+                        <a href="javascript:void(0)" onclick="navigateTo('companion')" class="inline-flex items-center text-xs font-semibold text-haven-accent group-hover:text-haven-accentDark">
+                            Launch Companion &rarr;
+                        </a>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="p-6 rounded-3xl bg-white border border-haven-subtle hover:border-haven-accent/40 transition-all duration-300 space-y-4 group">
+                        <div class="w-12 h-12 rounded-2xl bg-haven-surface group-hover:bg-haven-accentLight text-haven-accent flex items-center justify-center transition-colors">
+                            <i data-lucide="book-open" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-lg font-serif font-medium text-haven-dark">Curated Recovery Guides</h3>
+                        <p class="text-xs text-haven-slate leading-relaxed font-light">
+                            Actionable, step-by-step methodologies on overcoming chronic burnout, panic spikes, depression, and obsessive worry.
+                        </p>
+                        <a href="javascript:void(0)" onclick="navigateTo('recovery')" class="inline-flex items-center text-xs font-semibold text-haven-accent group-hover:text-haven-accentDark">
+                            Read Guides &rarr;
+                        </a>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="p-6 rounded-3xl bg-white border border-haven-subtle hover:border-haven-accent/40 transition-all duration-300 space-y-4 group">
+                        <div class="w-12 h-12 rounded-2xl bg-haven-surface group-hover:bg-haven-accentLight text-haven-accent flex items-center justify-center transition-colors">
+                            <i data-lucide="activity" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-lg font-serif font-medium text-haven-dark">Somatic Calming Tools</h3>
+                        <p class="text-xs text-haven-slate leading-relaxed font-light">
+                            Interactive visual breath regulators (4-7-8 and box breathing) and cognitive reframing tools to regulate the autonomic nervous system.
+                        </p>
+                        <a href="javascript:void(0)" onclick="navigateTo('exercises')" class="inline-flex items-center text-xs font-semibold text-haven-accent group-hover:text-haven-accentDark">
+                            Try Exercises &rarr;
+                        </a>
+                    </div>
+
+                    <!-- Card 4 -->
+                    <div class="p-6 rounded-3xl bg-white border border-haven-subtle hover:border-haven-accent/40 transition-all duration-300 space-y-4 group">
+                        <div class="w-12 h-12 rounded-2xl bg-haven-surface group-hover:bg-haven-accentLight text-haven-accent flex items-center justify-center transition-colors">
+                            <i data-lucide="globe-2" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-lg font-serif font-medium text-haven-dark">WHO & Global Crisis Aid</h3>
+                        <p class="text-xs text-haven-slate leading-relaxed font-light">
+                            Official World Health Organization mental health statistics, policy initiatives, and an exhaustive directory of certified hotlines worldwide.
+                        </p>
+                        <a href="javascript:void(0)" onclick="navigateTo('helplines')" class="inline-flex items-center text-xs font-semibold text-haven-accent group-hover:text-haven-accentDark">
+                            Find Helplines &rarr;
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Featured Mindful Affirmation / Quote Strip -->
+            <div class="bg-haven-surface rounded-3xl p-8 lg:p-12 text-center border border-haven-subtle max-w-4xl mx-auto space-y-4">
+                <i data-lucide="quote" class="w-8 h-8 mx-auto text-haven-accent/40"></i>
+                <blockquote class="text-xl sm:text-2xl font-serif text-haven-dark italic leading-snug">
+                    "You don’t have to control your thoughts. You just have to stop letting them control you."
+                </blockquote>
+                <p class="text-xs tracking-widest text-haven-slate uppercase font-medium">— Dan Millman</p>
+            </div>
+        </section>
+
+        <!-- ==================== VIEW 2: RECOVERY GUIDES ==================== -->
+        <section id="view-recovery" class="view-page hidden space-y-12 fade-in">
+            <div class="border-b border-haven-subtle pb-8">
+                <span class="text-xs uppercase tracking-widest text-haven-accent font-semibold">Knowledge Sanctuary</span>
+                <h1 class="text-3xl sm:text-4xl font-serif text-haven-dark mt-2">Comprehensive Mental Health Recovery Guides</h1>
+                <p class="text-sm text-haven-slate max-w-2xl mt-2 font-light">
+                    Clear, compassionate breakdowns of common mental health challenges with science-backed healing roadmaps and curated motivational resources.
                 </p>
-<div class="hero-buttons">
-<a class="btn primary-btn" href="#about">
-                        Learn More
-                    </a>
-<a class="btn secondary-btn" href="#resources">
-                        Find Support
-                    </a>
-</div>
-</div>
-<div class="hero-visual">
-<div class="circle circle-one"></div>
-<div class="circle circle-two"></div>
-<div class="brain-card">
-<div class="brain-icon">🧠</div>
-<h3>Take care of your mind</h3>
-<p>
-                        Small steps can make a meaningful difference.
+            </div>
+
+            <!-- Recovery Category Tabs -->
+            <div class="flex flex-wrap gap-2 pb-2" id="recoveryFilterTabs">
+                <button onclick="filterGuides('all')" class="filter-tab active px-4 py-2 rounded-full text-xs font-medium bg-haven-accent text-white transition-all">All Guides</button>
+                <button onclick="filterGuides('anxiety')" class="filter-tab px-4 py-2 rounded-full text-xs font-medium bg-haven-surface text-haven-slate hover:text-haven-dark transition-all">Anxiety & Panic</button>
+                <button onclick="filterGuides('depression')" class="filter-tab px-4 py-2 rounded-full text-xs font-medium bg-haven-surface text-haven-slate hover:text-haven-dark transition-all">Depression & Low Mood</button>
+                <button onclick="filterGuides('burnout')" class="filter-tab px-4 py-2 rounded-full text-xs font-medium bg-haven-surface text-haven-slate hover:text-haven-dark transition-all">Burnout & Fatigue</button>
+                <button onclick="filterGuides('mindfulness')" class="filter-tab px-4 py-2 rounded-full text-xs font-medium bg-haven-surface text-haven-slate hover:text-haven-dark transition-all">Overthinking & OCD</button>
+            </div>
+
+            <!-- Guides Grid -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="guidesGrid">
+                
+                <!-- Guide Card 1 -->
+                <div class="guide-item anxiety bg-white rounded-3xl p-7 border border-haven-subtle space-y-4 hover:shadow-md transition-shadow flex flex-col justify-between">
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center text-xs">
+                            <span class="px-2.5 py-1 rounded-full bg-emerald-50 text-haven-accent font-medium">Anxiety & Panic</span>
+                            <span class="text-stone-400">7 min read</span>
+                        </div>
+                        <h3 class="text-xl font-serif text-haven-dark font-medium">Deconstructing the Amygdala Hijack & Panic Spikes</h3>
+                        <p class="text-xs text-haven-slate leading-relaxed font-light">
+                            Understand why your fight-or-flight system activates without danger, and how to utilize the physiological sigh to downregulate acute panic in under 60 seconds.
+                        </p>
+                        <div class="pt-2">
+                            <h4 class="text-[11px] font-semibold text-haven-dark uppercase tracking-wider mb-2">Key Recovery Steps:</h4>
+                            <ul class="text-xs text-haven-slate space-y-1.5 list-disc pl-4 font-light">
+                                <li>Double-inhale through nose, extended mouth sigh.</li>
+                                <li>Anchoring gaze onto 3 unmoving objects.</li>
+                                <li>Acceptance without struggle: "This is adrenaline, not harm."</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="pt-4 border-t border-haven-subtle flex items-center justify-between">
+                        <button onclick="openVideoModal('https://www.youtube.com/embed/rBdhqBGqiMc', 'How to Stop a Panic Attack in Under 2 Minutes')" class="inline-flex items-center gap-1.5 text-xs font-semibold text-haven-accent hover:underline">
+                            <i data-lucide="play-circle" class="w-4 h-4"></i> Watch Healing Video
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Guide Card 2 -->
+                <div class="guide-item depression bg-white rounded-3xl p-7 border border-haven-subtle space-y-4 hover:shadow-md transition-shadow flex flex-col justify-between">
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center text-xs">
+                            <span class="px-2.5 py-1 rounded-full bg-amber-50 text-haven-warmth font-medium">Depression & Inertia</span>
+                            <span class="text-stone-400">9 min read</span>
+                        </div>
+                        <h3 class="text-xl font-serif text-haven-dark font-medium">Behavioral Activation: Escaping the Fog of Depression</h3>
+                        <p class="text-xs text-haven-slate leading-relaxed font-light">
+                            When motivation hits zero, action must precede emotion. Learn how micro-commitments rewire dopamine synthesis in depressive episodes.
+                        </p>
+                        <div class="pt-2">
+                            <h4 class="text-[11px] font-semibold text-haven-dark uppercase tracking-wider mb-2">Key Recovery Steps:</h4>
+                            <ul class="text-xs text-haven-slate space-y-1.5 list-disc pl-4 font-light">
+                                <li>The 2-Minute Rule: Wash one cup, step outside for 60s.</li>
+                                <li>Differentiating true exhaustion from depressive paralysis.</li>
+                                <li>Morning sunlight exposure within 45 mins of waking.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="pt-4 border-t border-haven-subtle flex items-center justify-between">
+                        <button onclick="openVideoModal('https://www.youtube.com/embed/8BJ8Y7EC3yc', 'Andrew Huberman on Overcoming Depression & Rebuilding Dopamine')" class="inline-flex items-center gap-1.5 text-xs font-semibold text-haven-accent hover:underline">
+                            <i data-lucide="play-circle" class="w-4 h-4"></i> Watch Science Video
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Guide Card 3 -->
+                <div class="guide-item burnout bg-white rounded-3xl p-7 border border-haven-subtle space-y-4 hover:shadow-md transition-shadow flex flex-col justify-between">
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center text-xs">
+                            <span class="px-2.5 py-1 rounded-full bg-rose-50 text-rose-700 font-medium">Burnout & Fatigue</span>
+                            <span class="text-stone-400">6 min read</span>
+                        </div>
+                        <h3 class="text-xl font-serif text-haven-dark font-medium">Restoring the Depleted Nervous System</h3>
+                        <p class="text-xs text-haven-slate leading-relaxed font-light">
+                            Burnout is not a personal failure; it is an allostatic overload. Discover the 7 types of rest essential for cognitive restoration.
+                        </p>
+                        <div class="pt-2">
+                            <h4 class="text-[11px] font-semibold text-haven-dark uppercase tracking-wider mb-2">Key Recovery Steps:</h4>
+                            <ul class="text-xs text-haven-slate space-y-1.5 list-disc pl-4 font-light">
+                                <li>Sensory deprivation intervals (silent walking, no screens).</li>
+                                <li>Setting radical boundary dialogues with work & obligations.</li>
+                                <li>Non-Sleep Deep Rest (NSDR) 15-minute protocol.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="pt-4 border-t border-haven-subtle flex items-center justify-between">
+                        <button onclick="openVideoModal('https://www.youtube.com/embed/ZGZX5-PAwR8', 'The 7 Types of Rest Every Person Needs')" class="inline-flex items-center gap-1.5 text-xs font-semibold text-haven-accent hover:underline">
+                            <i data-lucide="play-circle" class="w-4 h-4"></i> Watch TED Talk
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Guide Card 4 -->
+                <div class="guide-item mindfulness bg-white rounded-3xl p-7 border border-haven-subtle space-y-4 hover:shadow-md transition-shadow flex flex-col justify-between">
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center text-xs">
+                            <span class="px-2.5 py-1 rounded-full bg-sky-50 text-sky-800 font-medium">Overthinking & Rumination</span>
+                            <span class="text-stone-400">8 min read</span>
+                        </div>
+                        <h3 class="text-xl font-serif text-haven-dark font-medium">Cognitive Defusion: You Are Not Your Thoughts</h3>
+                        <p class="text-xs text-haven-slate leading-relaxed font-light">
+                            Practical tools from Acceptance and Commitment Therapy (ACT) to unhook from catastrophic thoughts and recurring mental loops.
+                        </p>
+                        <div class="pt-2">
+                            <h4 class="text-[11px] font-semibold text-haven-dark uppercase tracking-wider mb-2">Key Recovery Steps:</h4>
+                            <ul class="text-xs text-haven-slate space-y-1.5 list-disc pl-4 font-light">
+                                <li>Prefixing rumination: "I am noticing the thought that..."</li>
+                                <li>The 'Leaves on a Stream' visualization method.</li>
+                                <li>Scheduled 10-minute daily worry window.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="pt-4 border-t border-haven-subtle flex items-center justify-between">
+                        <button onclick="openVideoModal('https://www.youtube.com/embed/VpXpC-mD0iE', 'Alan Watts on Calming the Overthinking Mind')" class="inline-flex items-center gap-1.5 text-xs font-semibold text-haven-accent hover:underline">
+                            <i data-lucide="play-circle" class="w-4 h-4"></i> Watch Video
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Guide Card 5 -->
+                <div class="guide-item anxiety bg-white rounded-3xl p-7 border border-haven-subtle space-y-4 hover:shadow-md transition-shadow flex flex-col justify-between">
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center text-xs">
+                            <span class="px-2.5 py-1 rounded-full bg-emerald-50 text-haven-accent font-medium">Anxiety & Social Fear</span>
+                            <span class="text-stone-400">5 min read</span>
+                        </div>
+                        <h3 class="text-xl font-serif text-haven-dark font-medium">Overcoming Social Anxiety & Spotlight Bias</h3>
+                        <p class="text-xs text-haven-slate leading-relaxed font-light">
+                            How the brain overestimates how closely others observe us and cognitive steps to dismantle the fear of judgment.
+                        </p>
+                        <div class="pt-2">
+                            <h4 class="text-[11px] font-semibold text-haven-dark uppercase tracking-wider mb-2">Key Recovery Steps:</h4>
+                            <ul class="text-xs text-haven-slate space-y-1.5 list-disc pl-4 font-light">
+                                <li>Externalizing attention: Focus on colors around the room.</li>
+                                <li>Questioning worst-case projections objectively.</li>
+                                <li>Gradual micro-exposure without safety behaviors.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="pt-4 border-t border-haven-subtle flex items-center justify-between">
+                        <button onclick="openVideoModal('https://www.youtube.com/embed/1v0p4Bv-w4g', 'Rewiring Social Anxiety & Fear')" class="inline-flex items-center gap-1.5 text-xs font-semibold text-haven-accent hover:underline">
+                            <i data-lucide="play-circle" class="w-4 h-4"></i> Watch Video
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Guide Card 6 -->
+                <div class="guide-item depression bg-white rounded-3xl p-7 border border-haven-subtle space-y-4 hover:shadow-md transition-shadow flex flex-col justify-between">
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center text-xs">
+                            <span class="px-2.5 py-1 rounded-full bg-amber-50 text-haven-warmth font-medium">Grief & Loneliness</span>
+                            <span class="text-stone-400">10 min read</span>
+                        </div>
+                        <h3 class="text-xl font-serif text-haven-dark font-medium">Navigating Isolation & Cultivating Self-Compassion</h3>
+                        <p class="text-xs text-haven-slate leading-relaxed font-light">
+                            Dr. Kristin Neff’s framework for self-compassion to replace the inner critic with nurturing internal dialogue during painful transitions.
+                        </p>
+                        <div class="pt-2">
+                            <h4 class="text-[11px] font-semibold text-haven-dark uppercase tracking-wider mb-2">Key Recovery Steps:</h4>
+                            <ul class="text-xs text-haven-slate space-y-1.5 list-disc pl-4 font-light">
+                                <li>Physical soothing touch (hand on heart breathing).</li>
+                                <li>Common humanity remembrance: "Millions feel this today."</li>
+                                <li>Writing a letter to yourself from a loving mentor's voice.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="pt-4 border-t border-haven-subtle flex items-center justify-between">
+                        <button onclick="openVideoModal('https://www.youtube.com/embed/IvtZBUSplr4', 'The Power of Self-Compassion by Dr. Kristin Neff')" class="inline-flex items-center gap-1.5 text-xs font-semibold text-haven-accent hover:underline">
+                            <i data-lucide="play-circle" class="w-4 h-4"></i> Watch Video
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ==================== VIEW 3: CALMING EXERCISES & TOOLS ==================== -->
+        <section id="view-exercises" class="view-page hidden space-y-16 fade-in">
+            <div class="border-b border-haven-subtle pb-8">
+                <span class="text-xs uppercase tracking-widest text-haven-accent font-semibold">Mindful Grounding</span>
+                <h1 class="text-3xl sm:text-4xl font-serif text-haven-dark mt-2">Interactive Somatic & Calming Tools</h1>
+                <p class="text-sm text-haven-slate max-w-2xl mt-2 font-light">
+                    Immediate autonomic stabilization. Use these real-time guided visualizers to slow heart rate, regulate cortisol, and clear mental fog.
+                </p>
+            </div>
+
+            <!-- Breathing Exercise Chamber -->
+            <div class="bg-white rounded-3xl p-8 lg:p-12 border border-haven-subtle grid lg:grid-cols-12 gap-8 items-center">
+                <div class="lg:col-span-6 space-y-6">
+                    <span class="px-3 py-1 bg-haven-accentLight text-haven-accent text-xs rounded-full font-medium">Box & 4-7-8 Breathing</span>
+                    <h2 class="text-2xl sm:text-3xl font-serif text-haven-dark">The Guided Respiration Pacer</h2>
+                    <p class="text-xs sm:text-sm text-haven-slate leading-relaxed font-light">
+                        Follow the gentle expansion and contraction of the orb. Deep diaphragmatic breathing sends chemical signals through the vagus nerve directly to calm the heart.
                     </p>
-</div>
-</div>
-</section><section class="intro section" id="about">
-<div class="section-heading">
-<p class="eyebrow">UNDERSTANDING MENTAL HEALTH</p>
-<h2>
-                    What is mental health?
-                </h2>
-</div>
-<div class="intro-content">
-<div class="intro-text">
-<p>
-                        Mental health refers to our emotional, psychological
-                        and social wellbeing. It can influence how we think,
-                        feel, behave, handle stress and connect with others.
+
+                    <div class="flex flex-wrap gap-3">
+                        <button id="breathePattern478" onclick="setBreathingMode('478')" class="px-4 py-2 rounded-xl text-xs font-medium bg-haven-accent text-white transition-all">4-7-8 Calming</button>
+                        <button id="breathePatternBox" onclick="setBreathingMode('box')" class="px-4 py-2 rounded-xl text-xs font-medium bg-haven-surface text-haven-slate hover:text-haven-dark transition-all">Box Breathing (4-4-4-4)</button>
+                    </div>
+
+                    <div class="pt-2 flex items-center gap-4">
+                        <button id="breatheToggleBtn" onclick="toggleBreathing()" class="px-6 py-2.5 rounded-full bg-haven-dark text-white text-xs font-medium hover:bg-black transition-colors flex items-center gap-2">
+                            <i data-lucide="play" class="w-3.5 h-3.5" id="breatheIcon"></i>
+                            <span id="breatheBtnLabel">Start Session</span>
+                        </button>
+                        <span id="breatheTimerDisplay" class="text-xs text-haven-slate font-mono">00:00</span>
+                    </div>
+                </div>
+
+                <!-- Breathing Visualizer Canvas Area -->
+                <div class="lg:col-span-6 flex flex-col items-center justify-center p-8 bg-haven-base rounded-2xl border border-haven-subtle min-h-[320px] relative overflow-hidden">
+                    <!-- Background ambient aura -->
+                    <div id="breathAura" class="w-48 h-48 rounded-full bg-haven-accent/20 blur-2xl absolute transition-all duration-1000 scale-100"></div>
+                    
+                    <!-- Center Animated Breathing Bubble -->
+                    <div id="breathCircle" class="w-32 h-32 rounded-full bg-gradient-to-tr from-haven-accent to-emerald-300 text-white flex flex-col items-center justify-center shadow-lg transition-transform duration-[4000ms] ease-in-out z-10 scale-90">
+                        <span id="breathPhaseText" class="text-sm font-serif font-medium tracking-wide">Breathe In</span>
+                        <span id="breathCountText" class="text-xs opacity-80 font-mono mt-1">4s</span>
+                    </div>
+
+                    <p id="breathGuidance" class="text-xs text-haven-slate mt-8 z-10 text-center font-light">
+                        Press "Start Session" and align your breath with the circle.
                     </p>
-<p>
-                        Just like physical health, mental health can change
-                        throughout life. Everyone can experience difficult
-                        emotions or periods of stress, and asking for support
-                        is a normal part of taking care of ourselves.
+                </div>
+            </div>
+
+            <!-- 5-4-3-2-1 Sensory Grounding Tool -->
+            <div class="space-y-6">
+                <div class="max-w-2xl">
+                    <span class="text-xs uppercase tracking-widest text-haven-accent font-semibold">Immediate Grounding</span>
+                    <h2 class="text-2xl font-serif text-haven-dark mt-1">5-4-3-2-1 Sensory Reset Exercise</h2>
+                    <p class="text-xs text-haven-slate font-light mt-1">When dissociating or feeling acute panic, systematically walk through your five senses.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-5 gap-4">
+                    <div class="bg-white p-5 rounded-2xl border border-haven-subtle space-y-2 text-center hover:border-haven-accent transition-colors">
+                        <span class="w-8 h-8 rounded-full bg-haven-surface flex items-center justify-center text-haven-accent font-serif font-semibold text-sm mx-auto">5</span>
+                        <h4 class="text-xs font-semibold text-haven-dark">SEE</h4>
+                        <p class="text-[11px] text-haven-slate font-light">Notice 5 distinct objects in your room right now.</p>
+                    </div>
+
+                    <div class="bg-white p-5 rounded-2xl border border-haven-subtle space-y-2 text-center hover:border-haven-accent transition-colors">
+                        <span class="w-8 h-8 rounded-full bg-haven-surface flex items-center justify-center text-haven-accent font-serif font-semibold text-sm mx-auto">4</span>
+                        <h4 class="text-xs font-semibold text-haven-dark">TOUCH</h4>
+                        <p class="text-[11px] text-haven-slate font-light">Feel 4 textures (fabric, desk, cool air, your hands).</p>
+                    </div>
+
+                    <div class="bg-white p-5 rounded-2xl border border-haven-subtle space-y-2 text-center hover:border-haven-accent transition-colors">
+                        <span class="w-8 h-8 rounded-full bg-haven-surface flex items-center justify-center text-haven-accent font-serif font-semibold text-sm mx-auto">3</span>
+                        <h4 class="text-xs font-semibold text-haven-dark">HEAR</h4>
+                        <p class="text-[11px] text-haven-slate font-light">Acknowledge 3 subtle sounds in your background.</p>
+                    </div>
+
+                    <div class="bg-white p-5 rounded-2xl border border-haven-subtle space-y-2 text-center hover:border-haven-accent transition-colors">
+                        <span class="w-8 h-8 rounded-full bg-haven-surface flex items-center justify-center text-haven-accent font-serif font-semibold text-sm mx-auto">2</span>
+                        <h4 class="text-xs font-semibold text-haven-dark">SMELL</h4>
+                        <p class="text-[11px] text-haven-slate font-light">Identify 2 scents around you or inhale fresh air.</p>
+                    </div>
+
+                    <div class="bg-white p-5 rounded-2xl border border-haven-subtle space-y-2 text-center hover:border-haven-accent transition-colors">
+                        <span class="w-8 h-8 rounded-full bg-haven-surface flex items-center justify-center text-haven-accent font-serif font-semibold text-sm mx-auto">1</span>
+                        <h4 class="text-xs font-semibold text-haven-dark">TASTE</h4>
+                        <p class="text-[11px] text-haven-slate font-light">Sip cool water or savor one mindful taste.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cognitive Reframe Interactive Mini-Worksheet -->
+            <div class="bg-haven-surface rounded-3xl p-8 border border-haven-subtle space-y-6">
+                <div>
+                    <h3 class="text-xl font-serif text-haven-dark">Cognitive Thought Reframe Tool (CBT)</h3>
+                    <p class="text-xs text-haven-slate font-light mt-1">Transform catastrophic thoughts into balanced, grounded perspectives.</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="space-y-2">
+                        <label class="block text-xs font-medium text-haven-dark">1. Distorted / Anxious Thought</label>
+                        <textarea id="cbtInputThought" rows="3" class="w-full p-3 rounded-xl border border-haven-subtle bg-white text-xs text-haven-dark focus:outline-none focus:ring-1 focus:ring-haven-accent" placeholder="e.g., 'I will mess up everything tomorrow and ruin my future.'"></textarea>
+                    </div>
+
+                    <div class="space-y-2">
+                        <label class="block text-xs font-medium text-haven-dark">2. Objective & Compassionate Reframe</label>
+                        <div id="cbtOutputBox" class="w-full min-h-[76px] p-3 rounded-xl border border-haven-subtle bg-white/70 text-xs text-haven-slate italic font-light flex items-center">
+                            Click 'Generate Reframe' to challenge your automatic thought with cognitive psychology.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex justify-end">
+                    <button onclick="handleCBTReframe()" class="px-5 py-2 rounded-xl bg-haven-accent text-white text-xs font-medium hover:bg-haven-accentDark transition-colors flex items-center gap-1.5">
+                        <i data-lucide="refresh-cw" class="w-3.5 h-3.5"></i> Reframe with Empathy
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== VIEW 4: WHO & GLOBAL HELPLINES ==================== -->
+        <section id="view-helplines" class="view-page hidden space-y-16 fade-in">
+            <!-- Header -->
+            <div class="border-b border-haven-subtle pb-8">
+                <span class="text-xs uppercase tracking-widest text-haven-accent font-semibold">Verified Global Directory</span>
+                <h1 class="text-3xl sm:text-4xl font-serif text-haven-dark mt-2">World Health Organization & Crisis Support</h1>
+                <p class="text-sm text-haven-slate max-w-2xl mt-2 font-light">
+                    Official WHO guidelines on global mental health and a comprehensive directory of verified 24/7 confidential crisis hotlines worldwide.
+                </p>
+            </div>
+
+            <!-- WHO Key Facts & Initiatives Section -->
+            <div class="bg-white rounded-3xl p-8 lg:p-10 border border-haven-subtle space-y-8">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-blue-50 text-blue-700 flex items-center justify-center font-bold text-xs">
+                        WHO
+                    </div>
+                    <div>
+                        <h2 class="text-xl font-serif text-haven-dark font-medium">World Health Organization (WHO) Mental Health Action Framework</h2>
+                        <p class="text-xs text-haven-slate font-light">Global initiatives promoting mental well-being as a fundamental human right.</p>
+                    </div>
+                </div>
+
+                <!-- 4 WHO Key Metrics -->
+                <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 pt-2">
+                    <div class="p-5 rounded-2xl bg-haven-base border border-haven-subtle space-y-1">
+                        <span class="text-2xl font-serif text-haven-dark font-medium">1 in 8</span>
+                        <h4 class="text-xs font-semibold text-haven-accent">Global Prevalence</h4>
+                        <p class="text-[11px] text-haven-slate font-light">Around 970 million people worldwide live with a diagnosed mental health disorder.</p>
+                    </div>
+
+                    <div class="p-5 rounded-2xl bg-haven-base border border-haven-subtle space-y-1">
+                        <span class="text-2xl font-serif text-haven-dark font-medium">Top Cause</span>
+                        <h4 class="text-xs font-semibold text-haven-accent">Disability Factor</h4>
+                        <p class="text-[11px] text-haven-slate font-light">Depression and anxiety are leading causes of disability and economic burden globally.</p>
+                    </div>
+
+                    <div class="p-5 rounded-2xl bg-haven-base border border-haven-subtle space-y-1">
+                        <span class="text-2xl font-serif text-haven-dark font-medium">Comprehensive</span>
+                        <h4 class="text-xs font-semibold text-haven-accent">Action Plan 2013-2030</h4>
+                        <p class="text-[11px] text-haven-slate font-light">Committed to strengthening leadership, community care, and early suicide prevention.</p>
+                    </div>
+
+                    <div class="p-5 rounded-2xl bg-haven-base border border-haven-subtle space-y-1">
+                        <span class="text-2xl font-serif text-haven-dark font-medium">100% Free</span>
+                        <h4 class="text-xs font-semibold text-haven-accent">Universal Hotlines</h4>
+                        <p class="text-[11px] text-haven-slate font-light">Crisis telephone numbers operate toll-free, anonymously, and around the clock.</p>
+                    </div>
+                </div>
+
+                <div class="p-4 rounded-2xl bg-blue-50/60 border border-blue-100 flex items-start gap-3 text-xs text-blue-900 font-light">
+                    <i data-lucide="info" class="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5"></i>
+                    <span>
+                        <strong>Official WHO Resource:</strong> If you or someone you know is in immediate life-threatening physical danger, please contact your local emergency response (e.g., 911 in the USA, 999 in the UK, 112 in the EU, 000 in Australia) immediately.
+                    </span>
+                </div>
+            </div>
+
+            <!-- Searchable Global Crisis Helpline Directory -->
+            <div class="space-y-6">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                    <div>
+                        <h3 class="text-2xl font-serif text-haven-dark">Verified 24/7 International Crisis Helplines</h3>
+                        <p class="text-xs text-haven-slate font-light">Confidential, free support from trained counselors anytime.</p>
+                    </div>
+
+                    <!-- Search Input -->
+                    <div class="relative w-full md:w-72">
+                        <i data-lucide="search" class="w-4 h-4 text-stone-400 absolute left-3 top-3"></i>
+                        <input type="text" id="helplineSearch" onkeyup="searchHelplines()" placeholder="Search by country or service..." class="w-full pl-9 pr-4 py-2 text-xs rounded-xl bg-white border border-haven-subtle focus:outline-none focus:ring-1 focus:ring-haven-accent">
+                    </div>
+                </div>
+
+                <!-- Helpline Cards Grid -->
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="helplinesContainer">
+                    
+                    <!-- USA -->
+                    <div class="helpline-card bg-white p-6 rounded-3xl border border-haven-subtle space-y-4 hover:border-haven-accent transition-colors">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <span class="text-xs font-bold text-haven-accent uppercase tracking-wider">United States</span>
+                                <h4 class="text-base font-serif text-haven-dark font-medium">988 Suicide & Crisis Lifeline</h4>
+                            </div>
+                            <span class="text-xl">🇺🇸</span>
+                        </div>
+                        <p class="text-xs text-haven-slate font-light">Free, confidential support for people in suicidal crisis or mental health-related distress.</p>
+                        <div class="pt-2 border-t border-haven-subtle flex items-center justify-between">
+                            <span class="text-xs font-mono font-semibold text-haven-dark">Dial 988 or Text HOME to 741741</span>
+                            <a href="tel:988" class="p-2 rounded-full bg-haven-accentLight text-haven-accent hover:bg-haven-accent hover:text-white transition-colors">
+                                <i data-lucide="phone-call" class="w-4 h-4"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Canada -->
+                    <div class="helpline-card bg-white p-6 rounded-3xl border border-haven-subtle space-y-4 hover:border-haven-accent transition-colors">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <span class="text-xs font-bold text-haven-accent uppercase tracking-wider">Canada</span>
+                                <h4 class="text-base font-serif text-haven-dark font-medium">988 Suicide Crisis Helpline</h4>
+                            </div>
+                            <span class="text-xl">🇨🇦</span>
+                        </div>
+                        <p class="text-xs text-haven-slate font-light">Bilingual 24/7 service across all provinces and territories via call or text.</p>
+                        <div class="pt-2 border-t border-haven-subtle flex items-center justify-between">
+                            <span class="text-xs font-mono font-semibold text-haven-dark">Call or Text 988</span>
+                            <a href="tel:988" class="p-2 rounded-full bg-haven-accentLight text-haven-accent hover:bg-haven-accent hover:text-white transition-colors">
+                                <i data-lucide="phone-call" class="w-4 h-4"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- UK -->
+                    <div class="helpline-card bg-white p-6 rounded-3xl border border-haven-subtle space-y-4 hover:border-haven-accent transition-colors">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <span class="text-xs font-bold text-haven-accent uppercase tracking-wider">United Kingdom</span>
+                                <h4 class="text-base font-serif text-haven-dark font-medium">Samaritans & NHS 111</h4>
+                            </div>
+                            <span class="text-xl">🇬🇧</span>
+                        </div>
+                        <p class="text-xs text-haven-slate font-light">Round-the-clock emotional support for anyone struggling to cope.</p>
+                        <div class="pt-2 border-t border-haven-subtle flex items-center justify-between">
+                            <span class="text-xs font-mono font-semibold text-haven-dark">Call 116 123 (Free)</span>
+                            <a href="tel:116123" class="p-2 rounded-full bg-haven-accentLight text-haven-accent hover:bg-haven-accent hover:text-white transition-colors">
+                                <i data-lucide="phone-call" class="w-4 h-4"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Australia -->
+                    <div class="helpline-card bg-white p-6 rounded-3xl border border-haven-subtle space-y-4 hover:border-haven-accent transition-colors">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <span class="text-xs font-bold text-haven-accent uppercase tracking-wider">Australia</span>
+                                <h4 class="text-base font-serif text-haven-dark font-medium">Lifeline Australia & Beyond Blue</h4>
+                            </div>
+                            <span class="text-xl">🇦🇺</span>
+                        </div>
+                        <p class="text-xs text-haven-slate font-light">National charity providing all Australians experiencing emotional distress access to 24/7 crisis aid.</p>
+                        <div class="pt-2 border-t border-haven-subtle flex items-center justify-between">
+                            <span class="text-xs font-mono font-semibold text-haven-dark">Call 13 11 14</span>
+                            <a href="tel:131114" class="p-2 rounded-full bg-haven-accentLight text-haven-accent hover:bg-haven-accent hover:text-white transition-colors">
+                                <i data-lucide="phone-call" class="w-4 h-4"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- India -->
+                    <div class="helpline-card bg-white p-6 rounded-3xl border border-haven-subtle space-y-4 hover:border-haven-accent transition-colors">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <span class="text-xs font-bold text-haven-accent uppercase tracking-wider">India</span>
+                                <h4 class="text-base font-serif text-haven-dark font-medium">KIRAN & Tele-MANAS</h4>
+                            </div>
+                            <span class="text-xl">🇮🇳</span>
+                        </div>
+                        <p class="text-xs text-haven-slate font-light">Government 24/7 toll-free mental health helpline offering support in 13 languages.</p>
+                        <div class="pt-2 border-t border-haven-subtle flex items-center justify-between">
+                            <span class="text-xs font-mono font-semibold text-haven-dark">Call 14416 or 1800-599-0019</span>
+                            <a href="tel:14416" class="p-2 rounded-full bg-haven-accentLight text-haven-accent hover:bg-haven-accent hover:text-white transition-colors">
+                                <i data-lucide="phone-call" class="w-4 h-4"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- International / Europe -->
+                    <div class="helpline-card bg-white p-6 rounded-3xl border border-haven-subtle space-y-4 hover:border-haven-accent transition-colors">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <span class="text-xs font-bold text-haven-accent uppercase tracking-wider">European Union & International</span>
+                                <h4 class="text-base font-serif text-haven-dark font-medium">Befrienders Worldwide & 112</h4>
+                            </div>
+                            <span class="text-xl">🌐</span>
+                        </div>
+                        <p class="text-xs text-haven-slate font-light">Global volunteer network offering compassionate listening across 32 countries.</p>
+                        <div class="pt-2 border-t border-haven-subtle flex items-center justify-between">
+                            <span class="text-xs font-mono font-semibold text-haven-dark">befrienders.org / Dial 112</span>
+                            <a href="https://www.befrienders.org" target="_blank" class="p-2 rounded-full bg-haven-accentLight text-haven-accent hover:bg-haven-accent hover:text-white transition-colors">
+                                <i data-lucide="external-link" class="w-4 h-4"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== VIEW 5: CHATBOT COMPANION (USP PAGE) ==================== -->
+        <section id="view-companion" class="view-page hidden space-y-8 fade-in">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-haven-subtle pb-6">
+                <div>
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 text-haven-accent text-xs font-semibold mb-2">
+                        <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> Haven’s Core USP Feature
+                    </div>
+                    <h1 class="text-3xl font-serif text-haven-dark">Haven AI: Your Empathetic Motivational Mentor</h1>
+                    <p class="text-xs text-haven-slate font-light mt-1">
+                        Tell Haven what struggles or emotions you are confronting. Receive thoughtful motivation, actionable recovery advice, and curated video gems.
                     </p>
-</div>
-<div class="quote-card">
-<div class="quote-mark">“</div>
-<p>
-                        Taking care of your mental health is not a sign
-                        of weakness. It is part of taking care of yourself.
+                </div>
+                <button onclick="clearChatHistory()" class="text-xs text-stone-400 hover:text-haven-dark flex items-center gap-1 self-start">
+                    <i data-lucide="trash-2" class="w-3.5 h-3.5"></i> Clear Conversation
+                </button>
+            </div>
+
+            <!-- Main Chat Workspace Card -->
+            <div class="bg-white rounded-3xl border border-haven-subtle shadow-sm flex flex-col h-[680px] max-w-5xl mx-auto overflow-hidden">
+                
+                <!-- Chat Header -->
+                <div class="px-6 py-4 bg-haven-surface border-b border-haven-subtle flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        <div class="relative">
+                            <div class="w-10 h-10 rounded-full bg-haven-accent text-white flex items-center justify-center font-serif font-medium">
+                                H
+                            </div>
+                            <span class="w-3 h-3 rounded-full bg-emerald-500 border-2 border-white absolute bottom-0 right-0"></span>
+                        </div>
+                        <div>
+                            <h3 class="text-sm font-semibold text-haven-dark">Haven AI Guide</h3>
+                            <p class="text-[11px] text-haven-slate font-light">Trained on non-violent communication & motivational psychology</p>
+                        </div>
+                    </div>
+
+                    <!-- Quick Topic Chips -->
+                    <div class="hidden sm:flex items-center gap-2 text-xs text-haven-slate">
+                        <span class="font-medium text-[11px]">Quick Prompts:</span>
+                        <button onclick="sendQuickPrompt('I feel anxious about failure')" class="px-2.5 py-1 rounded-full bg-white border border-haven-subtle text-[11px] hover:border-haven-accent">Anxious about failure</button>
+                        <button onclick="sendQuickPrompt('I have no motivation today')" class="px-2.5 py-1 rounded-full bg-white border border-haven-subtle text-[11px] hover:border-haven-accent">Zero motivation</button>
+                        <button onclick="sendQuickPrompt('I feel lonely and isolated')" class="px-2.5 py-1 rounded-full bg-white border border-haven-subtle text-[11px] hover:border-haven-accent">Feeling lonely</button>
+                    </div>
+                </div>
+
+                <!-- Chat Message History Feed -->
+                <div id="chatMessages" class="flex-1 p-6 overflow-y-auto space-y-6 bg-[#FCFBF9]">
+                    
+                    <!-- Welcome Bot Message -->
+                    <div class="flex items-start gap-3 max-w-3xl">
+                        <div class="w-8 h-8 rounded-full bg-haven-accentLight text-haven-accent flex items-center justify-center flex-shrink-0 text-xs font-serif font-bold">
+                            H
+                        </div>
+                        <div class="chat-bubble-received p-5 text-xs sm:text-sm text-haven-dark space-y-3 shadow-sm border border-stone-200/50">
+                            <p class="leading-relaxed">
+                                Hello, my friend. Welcome to a judgment-free space. 🌿
+                            </p>
+                            <p class="leading-relaxed font-light text-haven-slate">
+                                I am Haven, your motivational companion. What weight are you carrying today? Whether it is overwhelming stress, burnout, sadness, or difficulty finding hope, share it with me. I will listen, motivate you, and provide the exact inspiring videos & tools to help you take the next step.
+                            </p>
+                            <div class="pt-2 flex flex-wrap gap-2 text-xs">
+                                <button onclick="sendQuickPrompt('I am having an anxiety spike')" class="px-3 py-1.5 rounded-xl bg-white border border-haven-subtle hover:bg-haven-accentLight text-haven-dark font-medium transition-colors">
+                                    ⚡ "I am having an anxiety spike"
+                                </button>
+                                <button onclick="sendQuickPrompt('I feel stuck and unmotivated in life')" class="px-3 py-1.5 rounded-xl bg-white border border-haven-subtle hover:bg-haven-accentLight text-haven-dark font-medium transition-colors">
+                                    🍂 "I feel stuck & exhausted"
+                                </button>
+                                <button onclick="sendQuickPrompt('I am being very hard on myself')" class="px-3 py-1.5 rounded-xl bg-white border border-haven-subtle hover:bg-haven-accentLight text-haven-dark font-medium transition-colors">
+                                    💔 "I am criticizing myself non-stop"
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Bot Typing Indicator (hidden by default) -->
+                <div id="typingIndicator" class="hidden px-6 py-2 bg-[#FCFBF9] flex items-center gap-2 text-xs text-haven-slate">
+                    <span class="w-2 h-2 rounded-full bg-haven-accent animate-bounce"></span>
+                    <span class="w-2 h-2 rounded-full bg-haven-accent animate-bounce [animation-delay:0.2s]"></span>
+                    <span class="w-2 h-2 rounded-full bg-haven-accent animate-bounce [animation-delay:0.4s]"></span>
+                    <span class="italic text-[11px] ml-1">Haven is thinking with care...</span>
+                </div>
+
+                <!-- Chat Input Box -->
+                <div class="p-4 bg-white border-t border-haven-subtle">
+                    <form id="chatForm" onsubmit="handleChatSubmit(event)" class="flex items-end gap-3">
+                        <div class="flex-1 relative">
+                            <textarea id="chatInput" rows="2" placeholder="Tell Haven what you are experiencing right now (e.g., 'I am overwhelmed with exams and feel hopeless')..." class="w-full p-3.5 pr-10 text-xs sm:text-sm rounded-2xl bg-haven-surface border border-transparent focus:border-haven-accent focus:bg-white focus:outline-none resize-none text-haven-dark transition-all"></textarea>
+                        </div>
+                        <button type="submit" class="px-5 py-3.5 rounded-2xl bg-haven-accent text-white font-medium hover:bg-haven-accentDark transition-all duration-200 flex items-center justify-center shadow-sm disabled:opacity-50">
+                            <i data-lucide="send" class="w-4 h-4"></i>
+                        </button>
+                    </form>
+                    <p class="text-[10px] text-stone-400 text-center mt-2 font-light">
+                        Haven AI provides motivational support and educational videos. It does not replace clinical therapy or emergency services.
                     </p>
-</div>
-</div>
-</section><section class="areas section">
-<div class="section-heading center">
-<p class="eyebrow">A HOLISTIC APPROACH</p>
-<h2>
-                    Mental wellbeing has many dimensions
-                </h2>
-</div>
-<div class="card-grid three-columns">
-<div class="info-card">
-<div class="card-icon">💭</div>
-<h3>Emotional</h3>
-<p>
-                        Understanding emotions and learning healthy ways
-                        to respond to difficult situations.
-                    </p>
-</div>
-<div class="info-card">
-<div class="card-icon">🧩</div>
-<h3>Psychological</h3>
-<p>
-                        Developing healthy thinking patterns, resilience
-                        and ways of coping with everyday challenges.
-                    </p>
-</div>
-<div class="info-card">
-<div class="card-icon">🤝</div>
-<h3>Social</h3>
-<p>
-                        Building positive relationships and maintaining
-                        meaningful connections with other people.
-                    </p>
-</div>
-</div>
-</section><section class="media-section section"><div class="section-heading center"><p class="eyebrow">PAUSE &amp; LEARN</p><h2>A calmer approach to mental wellbeing</h2><p class="section-description">Small moments of awareness can help us notice what we need and make it easier to ask for support.</p></div><div class="media-grid"><div class="media-card"><img alt="Person relaxing outdoors" src="https://images.unsplash.com/photo-1499209974431-9dddcece7f88?auto=format&amp;fit=crop&amp;w=1000&amp;q=85"/><div><span class="media-tag">Mindfulness</span><h3>Make space for a reset</h3><p>Try a short pause between classes, tasks or conversations. Put your phone aside, take a few comfortable breaths and notice how you feel.</p></div></div><div class="media-card video-card"><div class="video-placeholder"><span>▶</span><p>Educational video collection</p></div><div><span class="media-tag">Watch</span><h3>Learn from trusted health information</h3><p>Explore mental health videos and educational material from the World Health Organization.</p><a class="btn primary-btn" href="https://www.who.int/health-topics/mental-health" rel="noopener" target="_blank">Explore WHO videos</a></div></div></div></section></main><footer><div class="footer-container"><div class="footer-brand"><div class="logo"><span class="logo-icon">🌿</span><span>Mind<span>Care</span></span></div><p>A student-friendly mental health awareness project focused on understanding, healthy habits, supportive conversations and knowing when to reach out.</p></div><div class="footer-links"><h4>Explore</h4><a href="about.html">About mental health</a><a href="challenges.html">Challenges</a><a href="self-care.html">Self-Care</a><a href="support.html">Support</a></div><div class="footer-links"><h4>Learn</h4><a href="resources.html">Resources</a><a href="faq.html">FAQ</a><a href="https://www.who.int/health-topics/mental-health" target="_blank" rel="noopener">WHO Mental Health</a></div></div><div class="footer-bottom"><p>© 2026 MindCare. Mental Health Awareness Project.</p><p>Made with 💚 for a healthier community.</p></div></footer><script src="script.js"></script></body></html>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Modal for Curated YouTube Recovery Videos -->
+    <div id="videoModal" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm hidden items-center justify-center p-4">
+        <div class="bg-white w-full max-w-3xl rounded-3xl overflow-hidden shadow-2xl border border-stone-700 animate-fadeIn">
+            <div class="p-4 bg-haven-surface border-b border-haven-subtle flex items-center justify-between">
+                <h3 id="modalVideoTitle" class="text-sm font-serif font-medium text-haven-dark truncate pr-4">Mindful Video Sanctuary</h3>
+                <button onclick="closeVideoModal()" class="p-1 rounded-full text-haven-slate hover:text-haven-dark hover:bg-white">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+            <div class="relative pt-[56.25%] bg-black">
+                <iframe id="modalIframe" class="absolute inset-0 w-full h-full" src="" title="Recovery Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating AI Quick Chat Launcher (Bottom Right) -->
+    <button onclick="navigateTo('companion')" class="fixed bottom-6 right-6 z-30 p-4 rounded-full bg-haven-accent text-white shadow-xl hover:scale-105 hover:bg-haven-accentDark transition-all duration-300 flex items-center gap-2.5 border-2 border-white/60">
+        <i data-lucide="bot" class="w-5 h-5 animate-float"></i>
+        <span class="text-xs font-semibold pr-1 hidden sm:inline-block">Talk to Haven AI</span>
+    </button>
+
+    <!-- Footer -->
+    <footer class="bg-haven-surface border-t border-haven-subtle mt-20 pt-16 pb-12 text-xs text-haven-slate font-light">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12 grid sm:grid-cols-2 md:grid-cols-4 gap-8 pb-12 border-b border-haven-subtle">
+            <div class="space-y-3">
+                <div class="flex items-center gap-2">
+                    <i data-lucide="feather" class="w-4 h-4 text-haven-accent"></i>
+                    <span class="font-serif font-medium text-base text-haven-dark">haven</span>
+                </div>
+                <p class="leading-relaxed">
+                    A compassionate digital refuge dedicated to destigmatizing mental health, offering actionable recovery tools, and encouraging daily healing.
+                </p>
+            </div>
+
+            <div class="space-y-2">
+                <h4 class="font-semibold text-haven-dark font-sans text-xs uppercase tracking-wider">Navigation</h4>
+                <ul class="space-y-1.5">
+                    <li><button onclick="navigateTo('home')" class="hover:text-haven-dark">Sanctuary Overview</button></li>
+                    <li><button onclick="navigateTo('recovery')" class="hover:text-haven-dark">Recovery Guides & Videos</button></li>
+                    <li><button onclick="navigateTo('exercises')" class="hover:text-haven-dark">Somatic Calming Tools</button></li>
+                    <li><button onclick="navigateTo('helplines')" class="hover:text-haven-dark">WHO & Crisis Directory</button></li>
+                    <li><button onclick="navigateTo('companion')" class="hover:text-haven-dark text-haven-accent font-medium">Haven AI Companion (USP)</button></li>
+                </ul>
+            </div>
+
+            <div class="space-y-2">
+                <h4 class="font-semibold text-haven-dark font-sans text-xs uppercase tracking-wider">Crisis Lines</h4>
+                <ul class="space-y-1.5 font-mono">
+                    <li>US / CA: 988</li>
+                    <li>UK: 111 / 116 123</li>
+                    <li>Australia: 13 11 14</li>
+                    <li>India: 14416</li>
+                    <li>EU Emergency: 112</li>
+                </ul>
+            </div>
+
+            <div class="space-y-2">
+                <h4 class="font-semibold text-haven-dark font-sans text-xs uppercase tracking-wider">Compassionate Notice</h4>
+                <p class="leading-relaxed">
+                    Haven does not replace clinical medical treatment. If you are experiencing acute harm, please consult emergency services or a licensed therapist immediately.
+                </p>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-6 lg:px-12 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-stone-400">
+            <p>© <span id="yearSpan"></span> Haven Mental Health Sanctuary. Created for universal human recovery.</p>
+            <p class="flex items-center gap-1">
+                Built with quiet care & evidence-based empathy <i data-lucide="heart" class="w-3 h-3 text-haven-warmth inline"></i>
+            </p>
+        </div>
+    </footer>
+
+    <!-- SCRIPT APPLICATION LOGIC -->
+    <script>
+        // Init Lucide Icons & Date
+        document.getElementById('yearSpan').textContent = new Date().getFullYear();
+        lucide.createIcons();
+
+        // -------------------------------------------------------------
+        // SPA NAVIGATION / ROUTER SIMULATION
+        // -------------------------------------------------------------
+        let currentPage = 'home';
+
+        function navigateTo(pageId) {
+            currentPage = pageId;
+            const views = document.querySelectorAll('.view-page');
+            views.forEach(v => v.classList.add('hidden'));
+
+            const targetView = document.getElementById(`view-${pageId}`);
+            if (targetView) {
+                targetView.classList.remove('hidden');
+                targetView.classList.add('fade-in');
+            }
+
+            // Update Header Navigation Active State
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                if (link.getAttribute('data-page') === pageId) {
+                    link.classList.add('bg-haven-surface', 'text-haven-dark');
+                    link.classList.remove('text-haven-slate');
+                } else {
+                    link.classList.remove('bg-haven-surface', 'text-haven-dark');
+                    link.classList.add('text-haven-slate');
+                }
+            });
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            lucide.createIcons();
+        }
+
+        // Handle URL Hash for simulated subdomains/routes (e.g. #recovery, #helplines, #companion)
+        window.addEventListener('hashchange', () => {
+            const hash = window.location.hash.replace('#', '');
+            if (hash && ['home', 'recovery', 'exercises', 'helplines', 'companion'].includes(hash)) {
+                navigateTo(hash);
+            }
+        });
+
+        // Initial Load hash check
+        if (window.location.hash) {
+            const initialHash = window.location.hash.replace('#', '');
+            if (['home', 'recovery', 'exercises', 'helplines', 'companion'].includes(initialHash)) {
+                navigateTo(initialHash);
+            }
+        }
+
+        // Mobile drawer toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        function toggleMobileMenu() {
+            mobileMenu.classList.toggle('hidden');
+        }
+        mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+
+        // -------------------------------------------------------------
+        // MOOD CHECK-IN WIDGET
+        // -------------------------------------------------------------
+        let currentSelectedMood = "Overwhelmed";
+        function selectMood(moodName, feedbackText) {
+            currentSelectedMood = moodName;
+            const feedbackEl = document.getElementById('moodFeedbackText');
+            feedbackEl.textContent = `"${feedbackText}"`;
+            
+            // Highlight selected button visually
+            document.querySelectorAll('.mood-btn').forEach(btn => {
+                btn.classList.remove('ring-2', 'ring-haven-accent', 'bg-haven-accentLight');
+            });
+            event.currentTarget.classList.add('ring-2', 'ring-haven-accent', 'bg-haven-accentLight');
+        }
+
+        function startChatWithCurrentMood() {
+            navigateTo('companion');
+            const prompt = `I am feeling deeply ${currentSelectedMood.toLowerCase()} today. Can you motivate me and help me navigate this feeling?`;
+            setTimeout(() => {
+                document.getElementById('chatInput').value = prompt;
+                handleChatSubmit(new Event('submit'));
+            }, 300);
+        }
+
+        // -------------------------------------------------------------
+        // RECOVERY GUIDES FILTER
+        // -------------------------------------------------------------
+        function filterGuides(category) {
+            const tabs = document.querySelectorAll('#recoveryFilterTabs .filter-tab');
+            tabs.forEach(tab => {
+                tab.classList.remove('bg-haven-accent', 'text-white');
+                tab.classList.add('bg-haven-surface', 'text-haven-slate');
+            });
+            event.currentTarget.classList.add('bg-haven-accent', 'text-white');
+            event.currentTarget.classList.remove('bg-haven-surface', 'text-haven-slate');
+
+            const items = document.querySelectorAll('#guidesGrid .guide-item');
+            items.forEach(item => {
+                if (category === 'all' || item.classList.contains(category)) {
+                    item.classList.remove('hidden');
+                } else {
+                    item.classList.add('hidden');
+                }
+            });
+        }
+
+        // -------------------------------------------------------------
+        // VIDEO MODAL HANDLER
+        // -------------------------------------------------------------
+        const videoModal = document.getElementById('videoModal');
+        const modalIframe = document.getElementById('modalIframe');
+        const modalVideoTitle = document.getElementById('modalVideoTitle');
+
+        function openVideoModal(embedUrl, title) {
+            modalVideoTitle.textContent = title;
+            modalIframe.src = embedUrl + "?autoplay=1";
+            videoModal.classList.remove('hidden');
+            videoModal.classList.add('flex');
+        }
+
+        function closeVideoModal() {
+            modalIframe.src = "";
+            videoModal.classList.add('hidden');
+            videoModal.classList.remove('flex');
+        }
+
+        videoModal.addEventListener('click', (e) => {
+            if (e.target === videoModal) closeVideoModal();
+        });
+
+        // -------------------------------------------------------------
+        // SOMATIC BREATHING EXERCISE ENGINE
+        // -------------------------------------------------------------
+        let breathingInterval = null;
+        let timerInterval = null;
+        let isBreathingActive = false;
+        let breathingMode = '478'; // '478' or 'box'
+        let secondsElapsed = 0;
+
+        const breathCircle = document.getElementById('breathCircle');
+        const breathAura = document.getElementById('breathAura');
+        const breathPhaseText = document.getElementById('breathPhaseText');
+        const breathCountText = document.getElementById('breathCountText');
+        const breathGuidance = document.getElementById('breathGuidance');
+        const breatheBtnLabel = document.getElementById('breatheBtnLabel');
+        const breatheIcon = document.getElementById('breatheIcon');
+        const timerDisplay = document.getElementById('breatheTimerDisplay');
+
+        function setBreathingMode(mode) {
+            breathingMode = mode;
+            document.getElementById('breathePattern478').classList.toggle('bg-haven-accent', mode === '478');
+            document.getElementById('breathePattern478').classList.toggle('text-white', mode === '478');
+            document.getElementById('breathePattern478').classList.toggle('bg-haven-surface', mode !== '478');
+            document.getElementById('breathePattern478').classList.toggle('text-haven-slate', mode !== '478');
+
+            document.getElementById('breathePatternBox').classList.toggle('bg-haven-accent', mode === 'box');
+            document.getElementById('breathePatternBox').classList.toggle('text-white', mode === 'box');
+            document.getElementById('breathePatternBox').classList.toggle('bg-haven-surface', mode !== 'box');
+            document.getElementById('breathePatternBox').classList.toggle('text-haven-slate', mode !== 'box');
+
+            if (isBreathingActive) {
+                stopBreathing();
+                startBreathing();
+            }
+        }
+
+        function toggleBreathing() {
+            if (isBreathingActive) {
+                stopBreathing();
+            } else {
+                startBreathing();
+            }
+        }
+
+        function startBreathing() {
+            isBreathingActive = true;
+            breatheBtnLabel.textContent = "Pause Session";
+            breatheIcon.setAttribute('data-lucide', 'pause');
+            lucide.createIcons();
+
+            secondsElapsed = 0;
+            timerInterval = setInterval(() => {
+                secondsElapsed++;
+                const mins = String(Math.floor(secondsElapsed / 60)).padStart(2, '0');
+                const secs = String(secondsElapsed % 60).padStart(2, '0');
+                timerDisplay.textContent = `${mins}:${secs}`;
+            }, 1000);
+
+            runBreathCycle();
+        }
+
+        function stopBreathing() {
+            isBreathingActive = false;
+            breatheBtnLabel.textContent = "Start Session";
+            breatheIcon.setAttribute('data-lucide', 'play');
+            lucide.createIcons();
+
+            clearInterval(breathingInterval);
+            clearInterval(timerInterval);
+            clearTimeout(window.cycleTimeout);
+
+            breathCircle.style.transform = "scale(0.9)";
+            breathAura.style.transform = "scale(1)";
+            breathPhaseText.textContent = "Ready";
+            breathCountText.textContent = "--";
+            breathGuidance.textContent = "Session paused. Press start to resume gentle breathing.";
+        }
+
+        function runBreathCycle() {
+            if (!isBreathingActive) return;
+
+            if (breathingMode === '478') {
+                // Inhale 4s -> Hold 7s -> Exhale 8s
+                // Inhale (4s)
+                breathPhaseText.textContent = "Inhale Deeply";
+                breathCountText.textContent = "4 seconds";
+                breathGuidance.textContent = "Breathe in slowly through your nose, expanding your belly...";
+                breathCircle.style.transform = "scale(1.4)";
+                breathAura.style.transform = "scale(1.5)";
+
+                window.cycleTimeout = setTimeout(() => {
+                    if (!isBreathingActive) return;
+                    // Hold (7s)
+                    breathPhaseText.textContent = "Gently Hold";
+                    breathCountText.textContent = "7 seconds";
+                    breathGuidance.textContent = "Rest in stillness. Let oxygen nourish your nervous system...";
+                    breathCircle.style.transform = "scale(1.4)";
+
+                    window.cycleTimeout = setTimeout(() => {
+                        if (!isBreathingActive) return;
+                        // Exhale (8s)
+                        breathPhaseText.textContent = "Slow Exhale";
+                        breathCountText.textContent = "8 seconds";
+                        breathGuidance.textContent = "Release smoothly through parted lips, dropping all tension...";
+                        breathCircle.style.transform = "scale(0.85)";
+                        breathAura.style.transform = "scale(0.9)";
+
+                        window.cycleTimeout = setTimeout(() => {
+                            if (isBreathingActive) runBreathCycle();
+                        }, 8000);
+
+                    }, 7000);
+
+                }, 4000);
+
+            } else {
+                // Box Breathing (4s Inhale - 4s Hold - 4s Exhale - 4s Hold)
+                breathPhaseText.textContent = "Inhale";
+                breathCountText.textContent = "4s";
+                breathGuidance.textContent = "Inhale clarity and calm...";
+                breathCircle.style.transform = "scale(1.35)";
+
+                window.cycleTimeout = setTimeout(() => {
+                    if (!isBreathingActive) return;
+                    breathPhaseText.textContent = "Hold";
+                    breathCountText.textContent = "4s";
+                    breathGuidance.textContent = "Maintain gentle stillness...";
+
+                    window.cycleTimeout = setTimeout(() => {
+                        if (!isBreathingActive) return;
+                        breathPhaseText.textContent = "Exhale";
+                        breathCountText.textContent = "4s";
+                        breathGuidance.textContent = "Release tension entirely...";
+                        breathCircle.style.transform = "scale(0.85)";
+
+                        window.cycleTimeout = setTimeout(() => {
+                            if (!isBreathingActive) return;
+                            breathPhaseText.textContent = "Hold Empty";
+                            breathCountText.textContent = "4s";
+                            breathGuidance.textContent = "Rest before the next breath...";
+
+                            window.cycleTimeout = setTimeout(() => {
+                                if (isBreathingActive) runBreathCycle();
+                            }, 4000);
+
+                        }, 4000);
+
+                    }, 4000);
+
+                }, 4000);
+            }
+        }
+
+        // -------------------------------------------------------------
+        // CBT REFRAME TOOL INTERACTIVE
+        // -------------------------------------------------------------
+        function handleCBTReframe() {
+            const input = document.getElementById('cbtInputThought').value.trim();
+            const output = document.getElementById('cbtOutputBox');
+
+            if (!input) {
+                output.innerHTML = `<span class="text-amber-700">Please write a thought you are struggling with above first.</span>`;
+                return;
+            }
+
+            output.innerHTML = `<span class="italic text-haven-slate">Reframing with compassionate cognitive psychology...</span>`;
+
+            setTimeout(() => {
+                const lower = input.toLowerCase();
+                let reframeText = "";
+
+                if (lower.includes('fail') || lower.includes('mess up') || lower.includes('ruin')) {
+                    reframeText = "“A single event or day does not define my worth or future. Making mistakes is how the human brain integrates new wisdom. I can take this one step at a time with forgiveness.”";
+                } else if (lower.includes('never') || lower.includes('always') || lower.includes('everyone')) {
+                    reframeText = "“I am noticing 'all-or-nothing' thinking. Reality is nuanced; just because things are hard right now does not mean they will always remain this way.”";
+                } else if (lower.includes('hate') || lower.includes('worthless') || lower.includes('ugly') || lower.includes('stupid')) {
+                    reframeText = "“I am experiencing emotional exhaustion, and my mind is echoing harsh self-criticism. I deserve the same kindness and patience I would give a dear friend in pain.”";
+                } else {
+                    reframeText = `“While I acknowledge feeling distressed about '${input.slice(0, 35)}...', this thought is an anxious forecast, not an inevitable fact. I have survived every difficult day so far.”`;
+                }
+
+                output.innerHTML = `<strong class="text-haven-accent font-medium">Cognitive Reframe:</strong><br><span class="text-haven-dark font-sans not-italic mt-1 block leading-relaxed">${reframeText}</span>`;
+            }, 500);
+        }
+
+        // -------------------------------------------------------------
+        // SEARCH HELPLINES
+        // -------------------------------------------------------------
+        function searchHelplines() {
+            const query = document.getElementById('helplineSearch').value.toLowerCase();
+            const cards = document.querySelectorAll('#helplinesContainer .helpline-card');
+
+            cards.forEach(card => {
+                const text = card.textContent.toLowerCase();
+                if (text.includes(query)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // -------------------------------------------------------------
+        // USP FEATURE: HAVEN AI CHATBOT ENGINE & VIDEO RECOMMENDATIONS
+        // -------------------------------------------------------------
+        const chatMessages = document.getElementById('chatMessages');
+        const typingIndicator = document.getElementById('typingIndicator');
+        const chatInput = document.getElementById('chatInput');
+
+        // Database of Motivational Responses + Curated YouTube Videos based on emotional triggers
+        const knowledgeBase = [
+            {
+                keywords: ['anxious', 'anxiety', 'panic', 'heart racing', 'scared', 'worry', 'terrified', 'breathless'],
+                reply: "I hear how frightening and overwhelming that feels right now. Please place one hand over your chest, feel your feet planted firmly on the earth, and remember: **this anxiety spike is a biological wave that will peak and subside.** You are in no physical danger in this exact second.",
+                actionTip: "Try 3 'Physiological Sighs': two quick inhales through the nose, followed by one long, audible exhale through the mouth.",
+                video: {
+                    title: "Dr. Andrew Huberman: The Fastest Way to Stop Anxiety & Stress (Physiological Sigh)",
+                    embedUrl: "https://www.youtube.com/embed/rBdhqBGqiMc"
+                }
+            },
+            {
+                keywords: ['depressed', 'depression', 'hopeless', 'sad', 'crying', 'numb', 'pointless', 'empty', 'worthless'],
+                reply: "Thank you for reaching out and sharing this with me. When the heavy cloud of depression settles in, it tries to convince you that nothing will ever change. That is depression speaking, not truth. You do not have to conquer everything today—simply existing and breathing through this moment is more than enough.",
+                actionTip: "Commit to one 'micro-action' of grace: drink one glass of cold water, or open a window to feel the sunlight for 60 seconds.",
+                video: {
+                    title: "Kurzgesagt: An Antidote to Dissatisfaction & Finding Light in the Darkness",
+                    embedUrl: "https://www.youtube.com/embed/WPPPFqsECz0"
+                }
+            },
+            {
+                keywords: ['motivation', 'unmotivated', 'stuck', 'procrastinating', 'lazy', 'tired', 'burnout', 'exhausted', 'can’t work', 'cant focus'],
+                reply: "You are not lazy; you are running on empty. When your nervous system is depleted, your brain enters freeze mode to protect you. Motivation doesn't strike out of thin air—it follows tiny, gentle momentum. Let us remove the pressure of perfection.",
+                actionTip: "The 5-Minute Rule: Allow yourself to work on one tiny task for just 300 seconds. If you need to stop after that, you have full permission.",
+                video: {
+                    title: "Mel Robbins: The 5 Second Rule to Break Procrastination & Ignite Motivation",
+                    embedUrl: "https://www.youtube.com/embed/2Lz0VOltZKA"
+                }
+            },
+            {
+                keywords: ['lonely', 'loneliness', 'alone', 'isolated', 'nobody', 'no friends', 'abandoned', 'left out'],
+                reply: "Loneliness is one of the most painful human experiences, but feeling alone does not mean you are unlovable or forgotten. In this very moment, millions of gentle souls are feeling that same ache. You belong to this world, and your story has chapters yet unwritten.",
+                actionTip: "Send a simple, warm text to someone you care about, or listen to a compassionate guided voice.",
+                video: {
+                    title: "Kurzgesagt: Loneliness — What It Is & How to Overcome It",
+                    embedUrl: "https://www.youtube.com/embed/n3Xv_g3g-mA"
+                }
+            },
+            {
+                keywords: ['overthinking', 'racing thoughts', 'rumination', 'mind wont stop', 'cant sleep', 'insomnia', 'obsessing'],
+                reply: "Your mind is trying to solve problems in overdrive because it is seeking safety. But thinking harder will not quiet an overactive nervous system. Treat your thoughts like clouds passing through a wide sky: you are the sky, not the storm.",
+                actionTip: "Do a 'Brain Dump': Grab a piece of paper and write down every single thought without editing it, then close the notebook.",
+                video: {
+                    title: "Alan Watts: How to Calm the Racing Overthinking Mind",
+                    embedUrl: "https://www.youtube.com/embed/VpXpC-mD0iE"
+                }
+            },
+            {
+                keywords: ['self-hate', 'hate myself', 'criticism', 'guilt', 'shame', 'failure', 'failed', 'imposter'],
+                reply: "Please be gentle with yourself. You are carrying expectations that no single human was ever designed to shoulder alone. Self-compassion is not letting yourself off the hook; it is giving yourself the courage to stand back up with kindness.",
+                actionTip: "Ask yourself: 'What words would I speak right now to an 8-year-old version of me who was feeling this exact pain?'",
+                video: {
+                    title: "Brené Brown: The Power of Vulnerability & Overcoming Shame",
+                    embedUrl: "https://www.youtube.com/embed/iCvmsMzlF7o"
+                }
+            }
+        ];
+
+        // Generic fallback with a profoundly motivating talk
+        const defaultResponse = {
+            reply: "I hear the weight in what you are experiencing. Even when things feel tangled, remember that your capacity to heal and rebuild is far greater than whatever is hurting you right now. You are doing the best you can with the energy you have.",
+            actionTip: "Take one slow, conscious breath. Relax your jaw, drop your shoulders away from your ears, and give yourself credit for seeking peace today.",
+            video: {
+                title: "Nick Vujicic / Inspiring Words: Overcoming Hopelessness & Rising Strong",
+                embedUrl: "https://www.youtube.com/embed/tJnJ_fTYofQ"
+            }
+        };
+
+        function sendQuickPrompt(text) {
+            chatInput.value = text;
+            handleChatSubmit(new Event('submit'));
+        }
+
+        function handleChatSubmit(e) {
+            if (e) e.preventDefault();
+            const text = chatInput.value.trim();
+            if (!text) return;
+
+            // 1. Append User Bubble
+            appendUserMessage(text);
+            chatInput.value = '';
+
+            // 2. Show Typing Indicator
+            typingIndicator.classList.remove('hidden');
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+
+            // 3. Process Bot Response
+            setTimeout(() => {
+                const responseData = generateBotResponse(text);
+                typingIndicator.classList.add('hidden');
+                appendBotMessage(responseData);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }, 1000);
+        }
+
+        function appendUserMessage(msg) {
+            const wrapper = document.createElement('div');
+            wrapper.className = 'flex items-start justify-end gap-3 max-w-3xl ml-auto fade-in';
+            wrapper.innerHTML = `
+                <div class="chat-bubble-sent p-4 text-xs sm:text-sm shadow-sm leading-relaxed">
+                    ${escapeHtml(msg)}
+                </div>
+                <div class="w-8 h-8 rounded-full bg-haven-dark text-white flex items-center justify-center flex-shrink-0 text-xs font-medium">
+                    You
+                </div>
+            `;
+            chatMessages.appendChild(wrapper);
+        }
+
+        function generateBotResponse(userInput) {
+            const clean = userInput.toLowerCase();
+            for (let item of knowledgeBase) {
+                for (let kw of item.keywords) {
+                    if (clean.includes(kw)) {
+                        return item;
+                    }
+                }
+            }
+            return defaultResponse;
+        }
+
+        function appendBotMessage(data) {
+            const wrapper = document.createElement('div');
+            wrapper.className = 'flex items-start gap-3 max-w-3xl fade-in';
+            wrapper.innerHTML = `
+                <div class="w-8 h-8 rounded-full bg-haven-accentLight text-haven-accent flex items-center justify-center flex-shrink-0 text-xs font-serif font-bold">
+                    H
+                </div>
+                <div class="chat-bubble-received p-5 text-xs sm:text-sm text-haven-dark space-y-4 shadow-sm border border-stone-200/50">
+                    <p class="leading-relaxed">${data.reply}</p>
+                    
+                    ${data.actionTip ? `
+                    <div class="p-3 bg-white rounded-xl border border-haven-subtle text-xs text-haven-slate flex items-start gap-2.5">
+                        <i data-lucide="compass" class="w-4 h-4 text-haven-accent flex-shrink-0 mt-0.5"></i>
+                        <div>
+                            <strong class="text-haven-dark block mb-0.5">Mindful Step for Right Now:</strong>
+                            ${data.actionTip}
+                        </div>
+                    </div>` : ''}
+
+                    ${data.video ? `
+                    <div class="pt-1">
+                        <span class="text-[11px] uppercase tracking-wider text-haven-slate font-semibold block mb-2">Curated Recovery Video to Uplift You:</span>
+                        <div class="p-3.5 rounded-2xl bg-white border border-haven-subtle hover:border-haven-accent flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 transition-colors">
+                            <div class="flex items-center gap-3">
+                                <div class="w-9 h-9 rounded-full bg-rose-50 text-red-600 flex items-center justify-center flex-shrink-0">
+                                    <i data-lucide="youtube" class="w-5 h-5"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-xs font-medium text-haven-dark line-clamp-1">${data.video.title}</h4>
+                                    <span class="text-[10px] text-haven-slate">Recommended by Haven AI</span>
+                                </div>
+                            </div>
+                            <button onclick="openVideoModal('${data.video.embedUrl}', '${escapeHtml(data.video.title)}')" class="px-3.5 py-1.5 rounded-xl bg-haven-accent text-white text-xs font-medium hover:bg-haven-accentDark transition-colors flex items-center gap-1.5 whitespace-nowrap">
+                                <i data-lucide="play" class="w-3.5 h-3.5"></i> Watch Video
+                            </button>
+                        </div>
+                    </div>` : ''}
+
+                    <div class="pt-1 flex items-center justify-between text-[11px] text-stone-400 border-t border-stone-200/60 pt-2">
+                        <span>Was this motivating for you?</span>
+                        <div class="flex items-center gap-2">
+                            <button onclick="this.parentElement.innerHTML='<span class=\"text-emerald-700 font-medium\">Thank you for checking in ❤️</span>'" class="hover:text-haven-dark">🌱 Yes, thank you</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            chatMessages.appendChild(wrapper);
+            lucide.createIcons();
+        }
+
+        function clearChatHistory() {
+            chatMessages.innerHTML = `
+                <div class="flex items-start gap-3 max-w-3xl">
+                    <div class="w-8 h-8 rounded-full bg-haven-accentLight text-haven-accent flex items-center justify-center flex-shrink-0 text-xs font-serif font-bold">
+                        H
+                    </div>
+                    <div class="chat-bubble-received p-5 text-xs sm:text-sm text-haven-dark space-y-2 border border-stone-200/50">
+                        <p class="leading-relaxed">A fresh start. Whenever you are ready, share what's on your mind. I am here for you.</p>
+                    </div>
+                </div>
+            `;
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // Allow Enter key to submit in chat textarea (without Shift)
+        chatInput.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                handleChatSubmit(e);
+            }
+        });
+
+    </script>
+</body>
+</html>
